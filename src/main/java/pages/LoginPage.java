@@ -19,6 +19,12 @@ public class LoginPage extends PageBase{
     @FindBy(xpath = "/html/body/app-root/app-login/div/div[2]/div/form/div[3]/div[1]/button")
     WebElement loginButton;
 
+    @FindBy(xpath = "/html/body/app-root/app-login/div/div[1]/div/div/a[1]")
+    public WebElement registerLink;
+
+    @FindBy(id = "error-message")
+    public WebElement errorMsg;
+
     public ContactsPage login(String uName, String pass) {
         type(userName, uName);
         type(password, pass);

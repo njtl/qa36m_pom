@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public abstract class TestBase {
@@ -20,7 +21,11 @@ public abstract class TestBase {
         driver = new ChromeDriver();
         driver.get("http://phonebook.telran-edu.de:8080/user/login");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+    }
+
+    public boolean searchInPageSource(String source) {
+        return driver.getPageSource().contains(source);
     }
 
     @AfterMethod(enabled = true)

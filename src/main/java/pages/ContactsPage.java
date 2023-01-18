@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class ContactsPage extends PageBase{
 
     public ContactsPage(WebDriver driver) {
@@ -19,6 +21,22 @@ public class ContactsPage extends PageBase{
 
     @FindBy(xpath = "//select[@id='langSelect']")
     WebElement selectLang;
+
+    @FindBy(xpath = "/html/body/app-root/app-home-page/app-header/nav/div/ul/li[2]/a")
+    public WebElement addNewContactDialogOpenButton;
+
+    @FindBy(xpath = "//*[@id=\"add-contact-modal\"]/a")
+    public WebElement addNewContactDialogCloseButton;
+
+    @FindBy(xpath = "/html/body/ngb-modal-window/div/div/app-modal-content/div[1]/h4")
+    public List<WebElement> AddContactTextinDialog;
+
+    @FindBy(className = "list-group-item.list-group-item-action")
+    public List<WebElement> contactCards;
+
+    @FindBy(xpath = "/html/body/app-root/app-home-page/app-header/nav/div/div[2]/button[1]")
+    WebElement accountButton;
+
 
 //    @FindBy(xpath = "//option[contains(text(),'English')]")
 //    WebElement engLang;
@@ -57,5 +75,18 @@ public class ContactsPage extends PageBase{
         WebElement language = driver.findElement(By.xpath("//option[contains(text(),'"+lang+"')]"));
         click(language);
         return this;
+    }
+
+    public void openAddNewContactDialog() {
+        click(addNewContactDialogOpenButton);
+    }
+
+    public void closeAddNewContactDialog() {
+        click(addNewContactDialogCloseButton);
+    }
+
+    public AccountPage openAccount() {
+        click(accountButton);
+        return new AccountPage(driver);
     }
 }
