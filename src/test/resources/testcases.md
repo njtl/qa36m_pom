@@ -35,16 +35,14 @@ Warning messages "Email|Password is required." are displayed
 *ID*: tc_l3
 *Pre-conditions:* Logged out, login page opened
 *Title:* Check login button is enabled when required fields are filled with correct email and password => 8 chars
-*Steps:* 1. enter "test@gmail.com" into email field
-2. enter "test@gmail.com" into password field
-3. Check if Login button is active
-*Expected result:* Login button is enabled
-
-*ID*: tc_l4
-*Pre-conditions:* Logged out, login page opened, email field is empty, password field is empty
-*Title:* Check login button is not enabled when email and password fields are empty
-*Steps:* 1. Click on login button
-*Expected result:* Login button is disabled
+*Steps:*
+1. Check Login button is disabled
+2. enter "test@gmail.com" into email field
+3. enter "test@gmail.com" into password field
+4. Check if Login button is active
+*Expected result:*
+1. Login button is disabled
+4. Login button is enabled
 
 More TCs
 Check login button is not enabled when email is filled with qwe@mail.com and empty password
@@ -65,13 +63,47 @@ Verify if the password field is of the password type
 3. Press Save button
 4. Press on Contacts link
 5. Find line with contact data
-
 *Expected results:*
 1. Add contact form appeared, Save button is disabled
 2. Save button is active
 3. New page is opened -- Contact info, First name and last name fields contain data from Step 2
 4. Contacts page is opened
 5. New contact is in the bottom of the list
+
+Bug report:
+
+Summary:
+New created contact didn't appear at the bottom of the Contacts list
+*Pre-conditions:* Logged in as test@gmail.com, Contacts page is opened
+
+Steps to reproduce:
+1. Click on Add new contact link
+2. Enter "Name +" current datetime as a first name, "Second name" + current datetime as a last name, enter current datetime as About.
+3. Press Save button
+4. Press on Contacts link
+5. Find line with contact data
+
+Expected results:
+3. New page is opened -- Contact info, First name and last name fields contain data from Step 2
+5. New contact is in the bottom of the list
+
+Actual results:
+5. New contact is not at the bottom of the list
+
+Priority: 
+Severity: Minor | 2
+Screenshot / attachment: screenshot.jpg / recording
+Logs: .../logs.txt
+TC_id: tc_c1 / automated
+Component: webportal / Contacs list
+Product: Phonebook
+Version: 8.9.102
+Product Line: 
+Environment: MacOS 11 Chrome 109
+
+
+
+
 
 
 *ID*: tc_c2 

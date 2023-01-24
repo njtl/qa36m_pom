@@ -11,13 +11,13 @@ public class LoginPage extends PageBase{
     }
 
     @FindBy(id="defaultRegisterFormEmail")
-    WebElement userName;
+    public WebElement userName;
 
     @FindBy(xpath = "//*[@id=\"login-form\"]/div[2]/div[1]/div/input")
-    WebElement password;
+    public WebElement password;
 
     @FindBy(xpath = "/html/body/app-root/app-login/div/div[2]/div/form/div[3]/div[1]/button")
-    WebElement loginButton;
+    public WebElement loginButton;
 
     @FindBy(xpath = "/html/body/app-root/app-login/div/div[1]/div/div/a[1]")
     public WebElement registerLink;
@@ -25,11 +25,23 @@ public class LoginPage extends PageBase{
     @FindBy(id = "error-message")
     public WebElement errorMsg;
 
+    @FindBy(id="email-error-required")
+    public WebElement emailErrorMsg;
+
+    @FindBy(id="password-error-required")
+    public WebElement passwordErrorMsg;
+
+
+
     public ContactsPage login(String uName, String pass) {
-        type(userName, uName);
-        type(password, pass);
+        enterCreds(uName, pass);
         click(loginButton);
         return new ContactsPage(driver);
+    }
+
+    public void enterCreds(String uName, String pass) {
+        type(userName, uName);
+        type(password, pass);
     }
 
     public LoginPage loginNegative(String uName, String pass) {

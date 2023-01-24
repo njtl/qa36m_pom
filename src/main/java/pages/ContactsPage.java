@@ -89,4 +89,26 @@ public class ContactsPage extends PageBase{
         click(accountButton);
         return new AccountPage(driver);
     }
+
+    @FindBy(id = "form-name")
+    WebElement fNameField;
+    @FindBy(id = "form-lastName")
+    WebElement lNameField;
+    @FindBy(id = "form-about")
+    WebElement aboutField;
+    @FindBy(xpath = "//*[@id=\"add-contact-form\"]/div[4]/button[2]")
+    WebElement saveBtn;
+
+    public ContactsPage fillAddContactsForm(String firstNameKeys, String lastNameKeys, String aboutKeys){
+        type(fNameField, firstNameKeys);
+        type(lNameField, lastNameKeys);
+        type(aboutField, aboutKeys);
+        saveBtn.click();
+        return new ContactsPage(driver);
+    }
+
+    public AccountPage clickOnContact(WebElement element) {
+        element.click();
+        return new AccountPage(driver);
+    }
 }

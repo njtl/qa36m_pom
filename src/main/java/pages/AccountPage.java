@@ -27,5 +27,11 @@ public class AccountPage extends PageBase {
         click(acceptButton);
     }
 
+    @FindBy(id="contact-first-name")
+    public WebElement firstName;
+
+    @FindBy(id="contact-last-name")
+    public WebElement lastName;
+
 
 }
