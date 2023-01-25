@@ -21,7 +21,7 @@ public abstract class TestBase {
         driver = new ChromeDriver();
         driver.get("http://phonebook.telran-edu.de:8080/user/login");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     public boolean searchInPageSource(String source) {
